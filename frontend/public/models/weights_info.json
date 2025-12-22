@@ -1,0 +1,39 @@
+{
+  "layers": [
+    {
+      "name": "dense",
+      "kernel_shape": [
+        42,
+        128
+      ],
+      "bias_shape": [
+        128
+      ]
+    },
+    {
+      "name": "dense_1",
+      "kernel_shape": [
+        128,
+        64
+      ],
+      "bias_shape": [
+        64
+      ]
+    },
+    {
+      "name": "dense_2",
+      "kernel_shape": [
+        64,
+        28
+      ],
+      "bias_shape": [
+        28
+      ]
+    }
+  ],
+  "total_params": 15580,
+  "input_shape": [
+    42
+  ],
+  "output_classes": 28
+}

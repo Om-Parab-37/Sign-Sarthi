@@ -1,0 +1,7 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "caddy run --config Caddyfile --adapter caddyfile"
+restartPolicyType = "ON_FAILURE"

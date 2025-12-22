@@ -1,0 +1,42 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sign_sarthi_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - VIDEOS_DIRECTORY=/app/app/data/sign_animations
+      - PORT=8000
+      - CORS_ORIGINS=http://localhost:80,http://localhost:5173,http://localhost:3000
+      # Add other env vars here or use env_file
+    volumes:
+      # Mount animations directory if you want persistence or easier updates
+      # - ./backend/app/data/sign_animations:/app/app/data/sign_animations
+      - ./backend/app:/app/app # Optional: for hot reload if running with reload, but strictly speaking prod doesn't use reload
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:8000
+    container_name: sign_sarthi_frontend
+    ports:
+      - "80:80"
+    environment:
+      - PORT=80
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

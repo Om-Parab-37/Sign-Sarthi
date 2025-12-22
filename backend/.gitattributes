@@ -1,0 +1,1 @@
+app/data/sign_animations/*.mp4 filter=lfs diff=lfs merge=lfs -text
