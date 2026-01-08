@@ -262,7 +262,7 @@ const FingerspellingScreen = ({
         lastAddedLetterRef.current = null;
       }
     }
-  }, [isAutoMode, detectionState, currentLetter, confidence, settings.autoAddDelay]);
+  }, [isAutoMode, detectionState, currentLetter, settings.autoAddDelay]);
 
   const addLetter = useCallback((letter: string) => {
     if (letter === "space") {
